@@ -60,6 +60,15 @@ class Job implements JobIdInterface
         return $this->data;
     }
 
+    public function getJsonData(): array
+    {
+        try {
+            return json_decode($this->getData(), true, flags: JSON_THROW_ON_ERROR);
+        } catch (JsonException $e) {
+            throw BadJob::forInvalidData($this->getData(), $e);
+        }
+    }
+
     public function getReleases(): int
     {
         return (int) $this->client->getRedis()->get($this->getRedisKeyForReleases());

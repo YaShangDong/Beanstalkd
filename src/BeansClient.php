@@ -49,6 +49,12 @@ class BeansClient
         return new Job($job, $this);
     }
 
+    public function putJsonInTube(string $tube, mixed $data, int $pri = 1024, int $delay = 0, int $ttr = 60): Job
+    {
+        $data = json_encode($data);
+        return $this->putInTube($tube, $data, $pri, $delay, $ttr);
+    }
+
     public function __call(string $method, array $args): static | mixed
     {
         if (!method_exists($this->pheanstalk, $method)) throw new BadMethodCallException('undefined method: ' . $method);
