@@ -1,0 +1,16 @@
+{
+    "name": "yasd/beanstalkd",
+    "license": "MIT",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "YaSD\\Beanstalkd\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=8.0",
+        "pda/pheanstalk": "^4.0"
+    }
+}
