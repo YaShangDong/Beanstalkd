@@ -3,10 +3,38 @@
 namespace YaSD\Beanstalkd;
 
 use BadMethodCallException;
+use Pheanstalk\Contract\ResponseInterface;
 use Pheanstalk\Job as PheanstalkJob;
 use Pheanstalk\Pheanstalk;
 use Redis;
 
+/**
+ * @method void              bury(Job $job, int $priority = 1024)
+ * @method void              delete(Job $job)
+ * @method $this             ignore(string $tube)
+ * @method int               kick(int $max)
+ * @method void              kickJob(Job $job)
+ * @method string[]          listTubes()
+ * @method string[]          listTubesWatched(bool $askServer = false)
+ * @method string            listTubeUsed(bool $askServer = false)
+ * @method void              pauseTube(string $tube, int $delay)
+ * @method void              resumeTube(string $tube)
+ * @method Job               peek(Job $job)
+ * @method ?Job              peekReady()
+ * @method ?Job              peekDelayed()
+ * @method ?Job              peekBuried()
+ * @method Job               put(string $data, int $priority = 1024, int $delay = 0, int $ttr = 60)
+ * @method void              release(Job $job, int $priority = 1024, int $delay = 0)
+ * @method ?Job              reserve()
+ * @method ?Job              reserveWithTimeout(int $timeout)
+ * @method ResponseInterface statsJob(Job $job)
+ * @method ResponseInterface statsTube(string $tube)
+ * @method ResponseInterface stats()
+ * @method void              touch(Job $job)
+ * @method $this             useTube(string $tube)
+ * @method $this             watch(string $tube)
+ * @method $this             watchOnly(string $tube)
+ */
 class BeansClient
 {
     public function __construct(
