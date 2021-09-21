@@ -11,6 +11,7 @@
     "prefer-stable": true,
     "require": {
         "php": ">=8.0",
+        "ext-redis": "*",
         "pda/pheanstalk": "^4.0"
     }
 }
