@@ -47,7 +47,7 @@ class BeansClient extends BaseBeansClient
         return new Job($job, $this);
     }
 
-    public function putJsonInTube(string $tube, mixed $data, int $pri = 1024, int $delay = 0, int $ttr = 60, string $batchId = null): Job
+    public function putJsonInTube(string $tube, $data, int $pri = 1024, int $delay = 0, int $ttr = 60, string $batchId = null): Job
     {
         if (empty($batchId)) throw new InvalidArgumentException('batchId is empty');
 

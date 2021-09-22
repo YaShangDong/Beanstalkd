@@ -13,7 +13,7 @@ class Job extends BaseJob
 
     public function __construct(
         PheanstalkJob $job,
-        protected BeansClient $client,
+        BeansClient $client,
     ) {
         parent::__construct($job, $client);
         $jobArr = $this->decodeJob($job);
