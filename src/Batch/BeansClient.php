@@ -41,7 +41,7 @@ class BeansClient extends BaseBeansClient
         if (empty($batchId)) throw new InvalidArgumentException('batchId is empty');
 
         $redisKey = sprintf(static::$redisKeyForBatchTube, $batchId);
-        $this->redis->set($redisKey, $tube);
+        $this->redis->set($redisKey, $tube, ['NX', 'EX' => 86400 * 30]); // 1 month
 
         $job = $this->pheanstalk->useTube($tube)->put(Job::createJobData($data, $batchId), $pri, $delay, $ttr);
         return new Job($job, $this);
